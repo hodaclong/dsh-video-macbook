@@ -1,6 +1,6 @@
 # 03. Kiểm tra sau khi cài
 
-Có 3 mức: kiểm bằng máy (làm được ngay), kiểm sống qua HTTP (cần server đang chạy), kiểm bằng mắt (Sếp nhìn).
+Có 3 mức: kiểm bằng máy (làm được ngay), kiểm sống qua HTTP (cần server đang chạy), kiểm bằng mắt (người dùng nhìn tận mắt).
 
 ## A. Kiểm bằng máy
 
@@ -49,7 +49,7 @@ Kết quả đã đo thật (profile sạch `macvid` trên cổng 3099):
 | `GET /video` + `Range: bytes=-2048` | `206`, `content-range: bytes 59314323-59316370/59316371` | Range kiểu đuôi file chạy đúng |
 | `GET /video` với path `C:/Windows/win.ini` | `403` | Chặn đọc file ngoài thư mục làm việc |
 
-## C. Kiểm bằng mắt (phải do Sếp làm)
+## C. Kiểm bằng mắt (phải tự nhìn)
 
 1. Mở sidebar, mở cây file, bấm một file `.mp4`.
 2. Khung phát hiện ra. Bấm play: hình và tiếng chạy.
@@ -57,7 +57,7 @@ Kết quả đã đo thật (profile sạch `macvid` trên cổng 3099):
 4. Thử toàn màn hình và đổi tốc độ phát.
 5. Trong chat, nhắc một file video nhỏ hơn 48 MiB: có khung phát inline.
 
-Tôi (agent) **chưa** nhìn được màn hình trình duyệt, nên không tự nhận là "video chạy mượt". Bằng chứng tôi có là các con số ở mục A và B.
+Người viết tài liệu **chưa** nhìn được màn hình trình duyệt, nên không tự nhận là "video chạy mượt". Bằng chứng hiện có là các con số ở mục A và B.
 
 ## D. Nếu có bước nào FAIL
 

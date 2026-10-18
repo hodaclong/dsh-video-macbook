@@ -45,6 +45,16 @@ dsh-video-macbook/
 
 ## Cách chuyển sang MacBook
 
+**Cách 1 (khuyến nghị): clone từ GitHub**
+
+```bash
+git clone https://github.com/hodaclong/dsh-video-macbook.git
+cd dsh-video-macbook
+bash scripts/install-dsh-video.sh
+```
+
+**Cách 2: dùng file zip**
+
 1. Chép `dsh-video-macbook-<ngày>.zip` sang MacBook (AirDrop, USB, cloud).
 2. Kiểm tra toàn vẹn: `shasum -a 256 -c dsh-video-macbook-<ngày>.zip.sha256`
 3. Giải nén: `unzip dsh-video-macbook-<ngày>.zip -d ~/Downloads/`
@@ -53,7 +63,7 @@ dsh-video-macbook/
 ## Gói này KHÔNG chứa gì
 
 - Không có API key, token, cookie, mật khẩu, `~/.dsh/.credentials.yaml`.
-- Không có video, ảnh hay dữ liệu dự án của Sếp.
+- Không có video, ảnh hay dữ liệu dự án riêng của người dùng.
 - Không có `~/.dsh/profiles/web/pnpm-lock.yaml` của máy Windows (lockfile riêng của từng máy, tạo lại khi cài).
 - Không sửa gì trong bộ skill reelcrew (`~/.reelcrew`).
 
@@ -61,8 +71,7 @@ dsh-video-macbook/
 
 ```bash
 cd /d/01-video-ai
-# macOS/Linux/Git Bash:
 zip -r dsh-video-macbook/dist/dsh-video-macbook-$(date +%Y-%m-%d).zip dsh-video-macbook \
-  -x 'dsh-video-macbook/dist/*' -x 'dsh-video-macbook/.rehearse.sh'
+  -x 'dsh-video-macbook/dist/*' -x 'dsh-video-macbook/.git/*' -x 'dsh-video-macbook/.rehearse.sh'
 shasum -a 256 dist/dsh-video-macbook-*.zip > dist/dsh-video-macbook-*.zip.sha256
 ```

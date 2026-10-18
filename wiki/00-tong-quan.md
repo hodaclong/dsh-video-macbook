@@ -34,7 +34,7 @@ Phụ thuộc: `dsh-video-preview` cần `dsh-better-sidebar >= 0.4.0`; dòng `d
 - `node test/route.test.mjs` trong `dsh-video-preview` → **19/19 route checks passed**: `GET 200`, `content-type video/mp4`, `accept-ranges bytes`, `range 206`, `content-range`, `suffix range 206`, `416` khi range vô lý, `403` khi path ngoài cwd, `405` khi POST, `HEAD 200`.
 - Cả 3 plugin đều có bundle client đã build sẵn trong `node_modules` (đúng dạng `window.__ModuleLoader__.load(...)`).
 
-Chưa kiểm bằng mắt: bấm phát video trong trình duyệt. Phần này phải do Sếp nhìn, xem [03-kiem-tra-sau-cai.md](03-kiem-tra-sau-cai.md) mục "Kiểm bằng mắt".
+Chưa kiểm bằng mắt: bấm phát video trong trình duyệt. Phần này phải do người dùng nhìn tận mắt, xem [03-kiem-tra-sau-cai.md](03-kiem-tra-sau-cai.md) mục "Kiểm bằng mắt".
 
 ## 4. Đường đi tắt
 

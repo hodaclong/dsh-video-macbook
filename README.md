@@ -1,6 +1,15 @@
 # dsh-video-macbook
 
-Bộ cài + tài liệu để **DSH xem được video ngay trong giao diện web** (sidebar và trong chat), đóng gói từ máy Windows của Sếp để mang sang MacBook.
+Bộ cài + tài liệu để **DSH xem được video ngay trong giao diện web** (sidebar và trong chat), đóng gói từ một máy Windows để mang sang MacBook.
+
+Repo: <https://github.com/hodaclong/dsh-video-macbook>
+
+Lấy về bằng git (khuyến nghị, dùng được cho cả MacBook):
+
+```bash
+git clone https://github.com/hodaclong/dsh-video-macbook.git
+cd dsh-video-macbook
+```
 
 Xuất ngày 18/10/2026. Nguồn: DSH `0.2.0-rc.2`, profile `web`, 3 plugin đã chạy thật.
 
@@ -60,7 +69,7 @@ DSH sẽ đọc skill và tự làm theo. Skill cũng chứa bảng chẩn đoá
 
 Đã đo bằng máy: cài đặt, danh sách bundle, bundle client được phục vụ (`200`), route `/video` (`200` / `206` / `416` / `403`, test 19/19), file 56,6 MB vượt giới hạn 20 MB của sidebar.
 
-**Chưa** kiểm: hình ảnh thật trong trình duyệt (cần Sếp nhìn), và toàn bộ luồng trên macOS (bộ này đóng gói từ Windows, chưa có máy Mac để chạy thử). Xem [wiki/03-kiem-tra-sau-cai.md](wiki/03-kiem-tra-sau-cai.md) mục C.
+**Chưa** kiểm: hình ảnh thật trong trình duyệt (phải nhìn tận mắt), và toàn bộ luồng trên macOS (bộ này đóng gói từ Windows, chưa có máy Mac để chạy thử). Xem [wiki/03-kiem-tra-sau-cai.md](wiki/03-kiem-tra-sau-cai.md) mục C.
 
 ## Không có trong gói
 
