@@ -1,0 +1,6 @@
+# Giu nguyen kieu xuong dong LF cho script shell (de chay duoc tren macOS)
+* text=auto eol=lf
+*.tgz binary
+*.zip binary
+*.png binary
+*.jpg binary

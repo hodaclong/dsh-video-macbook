@@ -1,0 +1,10 @@
+# Vat lieu build, khong dua len git
+dist/
+
+# File tam khi thu nghiem tren may
+.rehearse.sh
+
+# Rac cua he dieu hanh
+.DS_Store
+Thumbs.db
+desktop.ini

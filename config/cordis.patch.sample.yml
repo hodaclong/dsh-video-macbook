@@ -1,0 +1,84 @@
+# MAU cordis.patch.yml cho profile web tren MacBook.
+# File that nam o: ~/.dsh/profiles/web/cordis.patch.yml
+#
+# DSH KHONG copy file nay de ghi de. Hay mo file that tren may Mac va:
+#   - Giu nguyen phan dau file (comment + [] goc neu con)
+#   - Dan them cac muc ben duoi vao CUOI file, sua cho dung y minh
+#   - KHONG dan API key vao day. Chi ghi TEN bien moi truong (apiKeyEnv).
+#
+# ---------------------------------------------------------------------------
+# 1) Giao dien: nen sang
+# ---------------------------------------------------------------------------
+- id: ui-theme
+  name: "@deepseek-ai/dsh-client-ui-theme"
+  config:
+    preference: light
+
+# ---------------------------------------------------------------------------
+# 2) Quyen: mac dinh read-only, chi mo full access khi that su can
+#    (Giay phep nay la cua DSH, khong lien quan plugin xem video)
+# ---------------------------------------------------------------------------
+- id: permission
+  name: "@deepseek-ai/dsh-permission-presets"
+  config:
+    presets:
+      read-only:
+        sandbox: read-only
+        approval: ask
+      workspace-write:
+        sandbox: workspace-write
+        approval: ask
+      danger-full-access:
+        sandbox: danger-full-access
+        approval: never
+    defaultPreset: read-only
+
+# ---------------------------------------------------------------------------
+# 3) Model: khai provider va model cho MacBook.
+#    apiKeyEnv = TEN bien moi truong chua key, KHONG phai key.
+#    Truoc khi chay dsh web tren Mac:
+#      export ROUTER_API_KEY="..."      (them vao ~/.zshrc neu muon giu)
+# ---------------------------------------------------------------------------
+- id: llm-pi-ai
+  name: "@deepseek-ai/dsh-llm-pi-ai"
+  config:
+    providers:
+      router:
+        displayName: 9router
+        apiKeyEnv: ROUTER_API_KEY
+        api: openai-completions
+        baseURL: https://REPLACE-BANG-DIA-CHI-ROUTER-CUA-SEP/v1
+        models:
+          - id: 9router-dsh-mac
+            name: 9router-dsh-mac
+            contextWindow: 200000
+
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: router
+    model: 9router-dsh-mac
+
+# ---------------------------------------------------------------------------
+# 4) TUY CHON: mount tay sidebar + video preview
+#    KHONG CAN neu da cai bang `dsh plugin --profile web add ...`, vi moi
+#    package tu mang cordis.patch.yml rieng va tu chen dong mount.
+#    Chi dung khi muon ep id/config rieng, va nho XOA dong mount trung id
+#    de tranh loi "duplicate loader entry id" (sidebar hien 2 lan).
+# ---------------------------------------------------------------------------
+# - insert:
+#     - id: better-sidebar
+#       name: 'dsh-better-sidebar'
+#       config:
+#         readLimit: 524288      # byte, doc file van ban
+#         mediaLimit: 20971520   # 20 MB, chi ap cho /sidebar/file; /video KHONG bi gioi han nay
+# - insert:
+#     - id: video-preview
+#       name: 'dsh-video-preview'
+
+# ---------------------------------------------------------------------------
+# KHONG dua vao file nay:
+#   - API key, token, cookie, mat khau
+#   - noi dung ~/.dsh/.credentials.yaml
+#   - khoa ElevenLabs / Lark / Composio cua may Windows
+# ---------------------------------------------------------------------------

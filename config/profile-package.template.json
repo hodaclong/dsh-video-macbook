@@ -1,0 +1,27 @@
+{
+  "_doc": [
+    "MAU package.json cho profile 'web' tren MacBook. Day la file that su nam o ~/.dsh/profiles/web/package.json.",
+    "Cach dung: mo file that, sua 2 cho: (1) dependencies, (2) dsh.profile.bundles.",
+    "Thu tu bundles co y nghia: bundle sau chay sau. dsh-better-sidebar phai dung TRUOC dsh-video-preview",
+    "de service ctx.betterSidebar ton tai khi video-preview dang ky viewer.",
+    "Script scripts/install-dsh-video.sh lam viec nay tu dong, khong can sua tay."
+  ],
+  "name": "dsh-profile-web",
+  "private": true,
+  "dependencies": {
+    "dsh-better-sidebar": "0.25.0",
+    "dsh-video-preview": "0.1.4",
+    "@wisdoverse/dsh-inline-media-viewer": "1.0.12"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-better-sidebar",
+        "dsh-video-preview",
+        "@wisdoverse/dsh-inline-media-viewer"
+      ]
+    }
+  }
+}

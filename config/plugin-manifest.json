@@ -1,0 +1,89 @@
+{
+  "kit": "dsh-video-macbook",
+  "kitVersion": "1.0.0",
+  "exportedAt": "2026-10-18",
+  "exportedFrom": {
+    "os": "Windows 11",
+    "dshHome": "C:/Users/<ten-nguoi-dung>/.dsh",
+    "profile": "web",
+    "dshVersion": "0.2.0-rc.2",
+    "node": "v24.19.0",
+    "pnpm": "12.10.1"
+  },
+  "target": {
+    "os": "macOS (Apple Silicon or Intel)",
+    "profile": "web",
+    "ui": "DSH Web GUI (dsh web)"
+  },
+  "requirements": {
+    "node": ">= 20",
+    "pnpm": ">= 10",
+    "dsh": "0.2.0-rc.2 (npm channel next; pin the exact version)"
+  },
+  "plugins": [
+    {
+      "role": "core",
+      "name": "dsh-better-sidebar",
+      "version": "0.25.0",
+      "spec": "dsh-better-sidebar@0.25.0",
+      "why": "Thanh sidebar trong DSH: cay file, tab, editor. Mo service ctx.betterSidebar (registerTab / registerFileViewer) de plugin khac cam trinh xem file vao.",
+      "needs": "DSH 0.2.0-rc.2+ (dong 0.24.x tro len). Voi DSH 0.1.7 dung dsh-better-sidebar@0.22.1",
+      "hostRoutes": ["/sidebar/api/*", "/sidebar/file", "/sidebar/html", "/sidebar/upload", "/sidebar/ws/agent-opens", "/sidebar/ws/fs-watch"]
+    },
+    {
+      "role": "core",
+      "name": "dsh-video-preview",
+      "version": "0.1.4",
+      "spec": "dsh-video-preview@0.1.4",
+      "why": "Trinh xem video trong sidebar: bam file .mp4/.webm/.mov/.mkv/.avi la mo <video controls> co keo tien do. Tu mo host route /video/* co HTTP Range (206) nen seek duoc, khong bi gioi han 20MB nhu mediaLimit cua sidebar.",
+      "needs": "dsh-better-sidebar >= 0.4.0",
+      "hostRoutes": ["/video/*"],
+      "entryId": "video-preview"
+    },
+    {
+      "role": "core",
+      "name": "@wisdoverse/dsh-inline-media-viewer",
+      "version": "1.0.12",
+      "spec": "@wisdoverse/dsh-inline-media-viewer@1.0.12",
+      "why": "Hien anh/video/audio ngay trong khung chat khi duong dan file duoc nhac toi (video mp4/webm/mov/m4v/mkv/avi/ogv).",
+      "limits": "Moi file toi da 48 MiB. Video render cua ODG thuong 40-90 MB nen phan lon se khong hien inline, phai xem qua sidebar.",
+      "hostRoutes": ["/inline-media/* (API rieng cua plugin)"]
+    },
+    {
+      "role": "optional",
+      "name": "dshmarket",
+      "version": "1.66.9",
+      "spec": "dshmarket@1.66.9",
+      "why": "Cho plugin market trong GUI de tim/cai plugin khac. Khong can cho viec xem video.",
+      "hostRoutes": []
+    },
+    {
+      "role": "optional",
+      "name": "dsh-client-ui-skins",
+      "version": "0.1.16",
+      "spec": "dsh-client-ui-skins (github:caoyiwei850/dsh-client-ui-skins)",
+      "why": "Doi skin giao dien. Khong can cho viec xem video.",
+      "hostRoutes": []
+    },
+    {
+      "role": "optional",
+      "name": "open-sea-skin",
+      "version": "1.2.3",
+      "spec": "open-sea-skin@1.2.3",
+      "why": "Skin 'open sea'. Tren may Windows hien dang TAT (disabled) trong .dsh-market/state.json.",
+      "hostRoutes": []
+    }
+  ],
+  "verifiedOnWindows": {
+    "date": "2026-10-18",
+    "checks": [
+      "dsh plugin --profile web list -> 6 plugin dung phien ban",
+      "node test/route.test.mjs (dsh-video-preview) -> 19/19 route checks passed (Range 206, suffix range, 416, 403 ngoai cwd, 405 POST)",
+      "client.js cua ca 3 plugin ton tai trong node_modules (bundle client da build san)"
+    ],
+    "notVerified": [
+      "Bam phat video trong trinh duyet (can mat nguoi xem, khong do bang may duoc)",
+      "Doi chieu bang mat: sidebar hien dung khung video"
+    ]
+  }
+}
